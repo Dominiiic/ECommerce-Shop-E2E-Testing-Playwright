@@ -19,9 +19,7 @@ test.describe('Product Overview Tests', () => {
         const noResultsMessage = page.getByRole('heading', { name: 'No products found for' }); 
 
         if (await noResultsMessage.isVisible()) {
-            // await page.goBack();
-            // await homePage.selectRandomCategory();
-            test.skip();
+            test.skip(true, 'No products found in this category, skipping test.');
         } else {
             const productName = await productOverviewPage.getProductName();
             const productPrice = await productOverviewPage.getProductPrice(); 

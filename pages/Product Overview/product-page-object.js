@@ -5,6 +5,7 @@ class ProductOverviewPage {
         this.addToCartButton = page.getByRole('button', { name: 'Add to cart' });
         this.buyNowButton = page.getByRole('button', { name: 'Buy Now' });
         this.productAvailability = page.locator('p.text-xl.flex');
+        this.cartIcon = page.locator('a[href="/cart"]');
     }
 
     async viewProductDetails() {

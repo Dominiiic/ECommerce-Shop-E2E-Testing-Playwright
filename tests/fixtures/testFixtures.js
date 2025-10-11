@@ -2,7 +2,7 @@ import { test as base, expect } from '@playwright/test';
 import { LoginPage } from '../../pages/Login/login-page-object.js';
 import { HomePage } from '../../pages/Home/home-page-object.js';
 import { ProductOverviewPage } from '../../pages/Product Overview/product-page-object.js';
-
+import { CartPage } from '../../pages/Cart/cart-page-object.js';
 
 const test = base.extend({
   // Setting up of custom fixtures for every page objects
@@ -16,6 +16,10 @@ const test = base.extend({
 
   productOverviewPage: async ({ page }, use) => {
     await use(new ProductOverviewPage(page));
+  },
+
+  cartPage: async ({ page }, use) => {
+    await use(new CartPage(page));
   },
 
   //  Custom fixture to automatically monitor network requests and log all failed requests (HTTP status codes 4xx and 5xx) during the test execution.
@@ -54,3 +58,5 @@ const test = base.extend({
 });
 
 export { test, expect };
+
+
