@@ -39,8 +39,8 @@ test.describe('Cart Functionality', () => {
     }
   });
 
-  test('order total accuracy', () => {
-    
+  test('order total accuracy', async ({ page }) => {
+    const subtotal = 100;
   });
 });
 
