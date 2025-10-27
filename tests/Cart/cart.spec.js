@@ -39,8 +39,16 @@ test.describe('Cart Functionality', () => {
     }
   });
 
-  test('order total accuracy', async ({ page }) => {
-    const subtotal = 100;
+  test('order total accuracy', async ({ page, cartPage }) => {
+    const subtotalValue = await cartPage.getSubtotalValue();
+    const shippingEstimateValue = await cartPage.getShipingEstimateValue();
+    const taxEstimateValue = await cartPage.getTaxEstimateValue();
+    const orderTotalValue = await cartPage.getOrderTotalValue();
+    const calculatedTotalValue = subtotalValue + shippingEstimateValue + taxEstimateValue;
+    const roundedcalculatedTotalValue = Math.round(calculatedTotalValue);
+
+    await expect(roundedcalculatedTotalValue).toEqual(orderTotalValue);
+   
   });
 });
 
