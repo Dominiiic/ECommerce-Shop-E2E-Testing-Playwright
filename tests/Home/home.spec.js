@@ -1,4 +1,6 @@
 import { test, expect } from '../fixtures/testFixtures.js';
+import { getAllLinksFromPage } from '../utils/getAllPageLinks.js';
+import { checkAllLinksStatus } from '../utils/checkAllLinksStatus.js';
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/');
@@ -20,6 +22,12 @@ test.describe('Homepage Functional Tests', () => {
       expect(productName.toLowerCase()).toBe(product);
     }
   });
+
+  test('all links on home page are valid', async ({ page }) => {
+    const linkUrls = await getAllLinksFromPage(page);
+    await checkAllLinksStatus(page, linkUrls);
+  });
+
 });
 
 test.describe('Homepage Visual Tests', () => {
