@@ -7,7 +7,6 @@ class HomePage {
   }
 
   async searchProduct() {
-    //const product = await this.randomizeProduct();
     await this.page.getByRole('textbox', { name: 'Type here' }).fill(this.product);
     await this.page.getByRole('button', { name: 'Search' }).click();
   }
@@ -17,16 +16,24 @@ class HomePage {
     return products[item];
   }
 
+  async getSearchResultLocators(){
+    return this.page.locator('.grid.grid-cols-4 > .flex.flex-col')
+  }
+
   //  Method to select a random category from the category menu
   async selectRandomCategory() {
     // Get all category links in the browse categories section
-    const categoryLinks = await this.page.locator('#category-menu > a').all();
+    let categoryLinks = await this.page.locator('#category-menu > a').all();
     // Pick a random category
     const randomIndex = Math.floor(Math.random() * categoryLinks.length);
-    const selectedCategory = categoryLinks[randomIndex];
-    const categoryName = await selectedCategory.textContent();
-    await selectedCategory.click();
+    const selectedCategoryLocator = categoryLinks[randomIndex];
+    const categoryName = await selectedCategoryLocator.textContent();
+    await selectedCategoryLocator.click();
     return categoryName?.trim();
+  }
+
+  async clickShopNow() {
+    await this.page.getByRole('link', { name: 'SHOP NOW' }).click();
   }
 }
 
