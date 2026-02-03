@@ -28,6 +28,11 @@ test.describe('Homepage Functional Tests', () => {
     await checkAllLinksStatus(page, linkUrls);
   });
 
+  test('shop now redirects to shop page', async ({ page, homePage }) => {
+    await homePage.clickShopNow();
+    await expect (page).toHaveURL(/shop/);
+  });
+
 });
 
 test.describe('Homepage Visual Tests', () => {
