@@ -4,6 +4,7 @@ import { HomePage } from '../../pages/Home/home-page-object.js';
 import { ProductOverviewPage } from '../../pages/Product Overview/product-page-object.js';
 import { CartPage } from '../../pages/Cart/cart-page-object.js';
 import { WishlistPage } from '../../pages/Wishlist/wishlist-page-object.js';
+import { CheckoutPage } from '../../pages/Checkout/checkout-page-object.js';
 
 const test = base.extend({
   // Setting up of custom fixtures for every page objects
@@ -25,6 +26,10 @@ const test = base.extend({
 
   wishlistPage: async ({ page }, use) => {
     await use(new WishlistPage(page));
+  },
+
+  checkoutPage: async ({ page }, use) => {
+    await use(new CheckoutPage(page));
   },
 
   //  Custom fixture to automatically monitor network requests and log all failed requests (HTTP status codes 4xx and 5xx) during the test execution.
