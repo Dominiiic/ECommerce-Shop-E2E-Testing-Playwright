@@ -1,6 +1,6 @@
 import { test, expect } from '../../fixtures/testFixtures.js';
 
-test.describe('Wishlist Functionality', () => {
+test.describe('Wishlist Functional tests', () => {
 
   test.beforeEach(async ({ page }) => {
      await page.goto('/');
