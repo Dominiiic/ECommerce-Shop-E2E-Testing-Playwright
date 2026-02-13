@@ -1,7 +1,7 @@
 import { test, expect } from '../../fixtures/testFixtures.js';
 import { randomizeNumber } from '../../helpers/randomizeNumber.js';
 
-test.describe('Cart Functionality', () => {
+test.describe('Cart functional tests', () => {
 
   test.beforeEach(async ({ page, productOverviewPage }) => {
     await page.goto('/product/wireless-headphones-demo');
