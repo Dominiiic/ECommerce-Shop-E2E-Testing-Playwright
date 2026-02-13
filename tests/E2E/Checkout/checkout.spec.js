@@ -1,6 +1,6 @@
 import { test, expect } from "../../fixtures/testFixtures";
 
-test.describe('Checkout Functionality', () => {
+test.describe('Checkout Functional tests', () => {
 
     test.describe.configure({ mode: 'serial' });
 
